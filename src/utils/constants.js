@@ -16,7 +16,7 @@ const ERROR = Object.freeze({
   mustNotBeBlank: '[ERROR] 공백입니다. 값을 입력해주세요.\n',
   mustBeNumber: '[ERROR] 숫자로 입력해주세요.\n',
   mustBeInRange: '[ERROR] 다리의 길이는 3 ~ 20 이내여야 합니다.\n',
-  mustBeString: '[ERROR] 이동할 칸은 U 또는 D의 문자로 입력해주세요.\n',
+  mustBeString: '[ERROR] 문자로 입력해주세요.\n',
   mustBeUpperCase: '[ERROR] 대문자로 입력해주세요.\n',
   mustBeValidDirection: '[ERROR] 이동할 칸은 U 또는 D 여야 합니다.\n',
   mustBeValidCommand:
