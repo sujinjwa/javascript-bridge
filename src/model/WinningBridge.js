@@ -1,6 +1,7 @@
 const Validation = require('../utils/Validation');
 const BridgeRandomNumberGenerator = require('../BridgeRandomNumberGenerator');
 const BridgeMaker = require('../BridgeMaker');
+const { UP, DOWN } = require('../utils/constants');
 
 class WinningBridge {
   #winningBridge = [];
@@ -18,7 +19,18 @@ class WinningBridge {
     );
   }
 
-  canMove(direction) {}
+  isSameDirection(direction, currentPosition) {
+    return this.#winningBridge[currentPosition] === direction;
+    // if (direction === UP.upperCase) {
+    //   return this.#winningBridge[currentPosition] === 1;
+    // }
+
+    // return this.#winningBridge[currentPosition] === 0;
+  }
+
+  getWinningBridge() {
+    return this.#winningBridge;
+  }
 }
 
 module.exports = WinningBridge;

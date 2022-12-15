@@ -1,4 +1,5 @@
 const Validation = require('../utils/Validation');
+const WinningBridge = require('./WinningBridge');
 /**
  * 다리 건너기 게임을 관리하는 클래스
  */
@@ -14,6 +15,10 @@ class BridgeGame {
     Validation.checkStringType(direction);
     Validation.checkUpperCase(direction);
     Validation.checkValidDirection(direction);
+  }
+
+  canMove(direction, winningBridge) {
+    return winningBridge.isSameDirection(direction, this.#currentPosition);
   }
 
   move(direction) {}

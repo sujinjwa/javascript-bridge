@@ -21,7 +21,7 @@ class Controller {
 
   validateSize(size) {
     try {
-      this.winningBridge.validateSize(size);
+      WinningBridge.validateSize(size);
     } catch (error) {
       OutputView.printMessage(error);
       this.inputBridgeSize();
@@ -32,6 +32,7 @@ class Controller {
 
   makeWinningBride(size) {
     this.winningBridge.make(size);
+    // console.log(this.winningBridge.getWinningBridge());
 
     this.inputMovingDirection();
   }
@@ -42,11 +43,18 @@ class Controller {
 
   validateMoving(direction) {
     try {
-      this.bridgeGame.validateMoving(direction);
+      BridgeGame.validateMoving(direction);
     } catch (error) {
       OutputView.printMessage(error);
       this.inputMovingDirection();
     }
+
+    this.move(direction);
+  }
+
+  move(direction) {
+    const CAN_MOVE = this.bridgeGame.canMove(direction, this.winningBridge);
+    // console.log(CAN_MOVE);
   }
 }
 
