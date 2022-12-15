@@ -1,5 +1,5 @@
 const Validation = require('../utils/Validation');
-const { UP, DOWN, MOVE, BLANK } = require('../utils/constants');
+const { UP, MOVE, BLANK } = require('../utils/constants');
 /**
  * 다리 건너기 게임을 관리하는 클래스
  */
@@ -58,6 +58,10 @@ class BridgeGame {
 
   getLowerBridge() {
     return this.#lowerBridge;
+  }
+
+  isSucceeded(winningBridge) {
+    return winningBridge.isSameLength(this.#upperBridge);
   }
 
   /**

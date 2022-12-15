@@ -32,7 +32,7 @@ class Controller {
 
   makeWinningBride(size) {
     this.winningBridge.make(size);
-    console.log(this.winningBridge.getWinningBridge());
+    // console.log(this.winningBridge.getWinningBridge());
 
     this.inputMovingDirection();
   }
@@ -55,6 +55,15 @@ class Controller {
   move(direction) {
     const CAN_MOVE = this.bridgeGame.canMove(direction, this.winningBridge);
     this.bridgeGame.move(CAN_MOVE, direction);
+
+    if (this.bridgeGame.isSucceeded(this.winningBridge)) {
+      return this.printResult();
+    }
+
+    this.printMap(CAN_MOVE);
+  }
+
+  printMap(CAN_MOVE) {
     OutputView.printMap(this.bridgeGame);
 
     this.continueOrRetry(CAN_MOVE);
@@ -84,7 +93,7 @@ class Controller {
   proceedRetryOrQuit(command) {
     if (command === RETRY.upperCase) return this.retry();
 
-    return this.quit();
+    return this.printResult();
   }
 
   retry() {
@@ -93,7 +102,9 @@ class Controller {
     this.inputMovingDirection();
   }
 
-  quit() {}
+  printResult() {
+    // console.log('끝');
+  }
 }
 
 module.exports = Controller;

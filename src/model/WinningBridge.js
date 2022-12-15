@@ -26,6 +26,10 @@ class WinningBridge {
   getWinningBridge() {
     return this.#winningBridge;
   }
+
+  isSameLength(currentBridge) {
+    return this.#winningBridge.length === currentBridge.length;
+  }
 }
 
 module.exports = WinningBridge;
