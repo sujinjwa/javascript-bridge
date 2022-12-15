@@ -32,7 +32,7 @@ class Controller {
 
   makeWinningBride(size) {
     this.winningBridge.make(size);
-    // console.log(this.winningBridge.getWinningBridge());
+    console.log(this.winningBridge.getWinningBridge());
 
     this.inputMovingDirection();
   }
@@ -103,7 +103,7 @@ class Controller {
   }
 
   printResult() {
-    // console.log('끝');
+    OutputView.printResult(this.bridgeGame, this.winningBridge);
   }
 }
 
