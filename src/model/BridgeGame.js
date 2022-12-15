@@ -5,7 +5,6 @@ const { UP, MOVE, BLANK } = require('../utils/constants');
  */
 class BridgeGame {
   #tryingCount = 1;
-  #currentPosition = 0;
   #upperBridge = [];
   #lowerBridge = [];
   /**
@@ -28,28 +27,18 @@ class BridgeGame {
   }
 
   canMove(direction, winningBridge) {
-    return winningBridge.isSameDirection(direction, this.#currentPosition);
+    return winningBridge.isSameDirection(direction, this.#upperBridge.length);
   }
 
   move(CAN_MOVE, direction) {
-    this.#currentPosition += 1;
-    if (CAN_MOVE) {
-      if (direction === UP.upperCase) {
-        this.#upperBridge.push(MOVE.canGo);
-        this.#lowerBridge.push(BLANK);
-        return;
-      }
-      this.#upperBridge.push(BLANK);
-      this.#lowerBridge.push(MOVE.canGo);
-      return;
-    }
     if (direction === UP.upperCase) {
-      this.#upperBridge.push(MOVE.cantGo);
+      this.#upperBridge.push(CAN_MOVE ? MOVE.canGo : MOVE.cantGo);
       this.#lowerBridge.push(BLANK);
       return;
     }
+
     this.#upperBridge.push(BLANK);
-    this.#lowerBridge.push(MOVE.cantGo);
+    this.#lowerBridge.push(CAN_MOVE ? MOVE.canGo : MOVE.cantGo);
   }
 
   getUpperBridge() {
@@ -74,7 +63,6 @@ class BridgeGame {
    * 재시작을 위해 필요한 메서드의 반환 값(return value), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
    */
   retry() {
-    this.#currentPosition = 0;
     this.#tryingCount += 1;
     this.#upperBridge = [];
     this.#lowerBridge = [];
