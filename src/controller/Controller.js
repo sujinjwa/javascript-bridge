@@ -54,7 +54,7 @@ class Controller {
 
   move(direction) {
     const CAN_MOVE = this.bridgeGame.canMove(direction, this.winningBridge);
-    // console.log(CAN_MOVE);
+    this.bridgeGame.move(CAN_MOVE, direction);
   }
 }
 

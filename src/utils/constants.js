@@ -18,15 +18,21 @@ const BRIDGE_SIZE = Object.freeze({
   max: 20,
 });
 
-const ZERO = Object.freeze(0);
-const ONE = Object.freeze(1);
 const UP = Object.freeze({
   upperCase: 'U',
   lowerCase: 'u',
 });
+
 const DOWN = Object.freeze({
   upperCase: 'D',
   lowerCase: 'd',
 });
 
-module.exports = { MESSAGE, ERROR, BRIDGE_SIZE, ZERO, ONE, UP, DOWN };
+const ZERO = Object.freeze(0);
+const ONE = Object.freeze(1);
+const MOVE = Object.freeze({
+  canGo: 'O',
+  cantGo: 'X',
+});
+
+module.exports = { MESSAGE, ERROR, BRIDGE_SIZE, ZERO, ONE, UP, DOWN, MOVE };
