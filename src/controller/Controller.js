@@ -55,12 +55,28 @@ class Controller {
   move(direction) {
     const CAN_MOVE = this.bridgeGame.canMove(direction, this.winningBridge);
     this.bridgeGame.move(CAN_MOVE, direction);
+    OutputView.printMap(this.bridgeGame);
 
-    this.printMoving();
+    this.continueOrRetry(CAN_MOVE);
   }
 
-  printMoving() {
-    OutputView.printMap(this.bridgeGame);
+  continueOrRetry(CAN_MOVE) {
+    if (CAN_MOVE) return this.inputMovingDirection();
+
+    return this.inputGameCommand();
+  }
+
+  inputGameCommand() {
+    InputView.readGameCommand(this.validateCommand.bind(this));
+  }
+
+  validateCommand(command) {
+    try {
+      BridgeGame.validateCommand(command);
+    } catch (error) {
+      OutputView.printMessage(error);
+      this.inputGameCommand();
+    }
   }
 }
 

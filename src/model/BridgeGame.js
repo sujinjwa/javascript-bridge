@@ -15,8 +15,15 @@ class BridgeGame {
   static validateMoving(direction) {
     Validation.checkBlank(direction);
     Validation.checkStringType(direction);
-    Validation.checkUpperCase(direction);
+    Validation.checkUpperCaseOfDirection(direction);
     Validation.checkValidDirection(direction);
+  }
+
+  static validateCommand(command) {
+    Validation.checkBlank(command);
+    Validation.checkStringType(command);
+    Validation.checkUpperCaseOfCommand(command);
+    Validation.checkValidCommand(command);
   }
 
   canMove(direction, winningBridge) {
@@ -29,6 +36,7 @@ class BridgeGame {
       if (direction === UP.upperCase) {
         this.#upperBridge.push(MOVE.canGo);
         this.#lowerBridge.push(BLANK);
+        return;
       }
       this.#upperBridge.push(BLANK);
       this.#lowerBridge.push(MOVE.canGo);
