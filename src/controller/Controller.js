@@ -24,6 +24,12 @@ class Controller {
       OutputView.printMessage(error);
       this.inputBridgeSize();
     }
+
+    this.makeWinningBride(size);
+  }
+
+  makeWinningBride(size) {
+    this.winningBridge.make(size);
   }
 }
 

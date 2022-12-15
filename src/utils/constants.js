@@ -15,5 +15,8 @@ const BRIDGE_SIZE = Object.freeze({
 });
 
 const ZERO = Object.freeze(0);
+const ONE = Object.freeze(1);
+const UP = Object.freeze('U');
+const DOWN = Object.freeze('D');
 
-module.exports = { MESSAGE, ERROR, BRIDGE_SIZE, ZERO };
+module.exports = { MESSAGE, ERROR, BRIDGE_SIZE, ZERO, ONE, UP, DOWN };
