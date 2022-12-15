@@ -21,11 +21,6 @@ class WinningBridge {
 
   isSameDirection(direction, currentPosition) {
     return this.#winningBridge[currentPosition] === direction;
-    // if (direction === UP.upperCase) {
-    //   return this.#winningBridge[currentPosition] === 1;
-    // }
-
-    // return this.#winningBridge[currentPosition] === 0;
   }
 
   getWinningBridge() {

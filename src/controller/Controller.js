@@ -32,7 +32,7 @@ class Controller {
 
   makeWinningBride(size) {
     this.winningBridge.make(size);
-    // console.log(this.winningBridge.getWinningBridge());
+    console.log(this.winningBridge.getWinningBridge());
 
     this.inputMovingDirection();
   }
@@ -55,6 +55,12 @@ class Controller {
   move(direction) {
     const CAN_MOVE = this.bridgeGame.canMove(direction, this.winningBridge);
     this.bridgeGame.move(CAN_MOVE, direction);
+
+    this.printMoving();
+  }
+
+  printMoving() {
+    OutputView.printMap(this.bridgeGame);
   }
 }
 

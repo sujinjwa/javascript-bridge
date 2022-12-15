@@ -1,5 +1,5 @@
 const Validation = require('../utils/Validation');
-const { UP, DOWN, MOVE } = require('../utils/constants');
+const { UP, DOWN, MOVE, BLANK } = require('../utils/constants');
 /**
  * 다리 건너기 게임을 관리하는 클래스
  */
@@ -26,12 +26,21 @@ class BridgeGame {
   move(CAN_MOVE, direction) {
     this.#currentPosition += 1;
     if (CAN_MOVE) {
-      if (direction === UP.upperCase) this.#upperBridge.push(MOVE.canGo);
-      if (direction === DOWN.upperCase) this.#lowerBridge.push(MOVE.canGo);
+      if (direction === UP.upperCase) {
+        this.#upperBridge.push(MOVE.canGo);
+        this.#lowerBridge.push(BLANK);
+      }
+      this.#upperBridge.push(BLANK);
+      this.#lowerBridge.push(MOVE.canGo);
       return;
     }
-    if (direction === UP.upperCase) this.#upperBridge.push(MOVE.cantGo);
-    if (direction === DOWN.upperCase) this.#lowerBridge.push(MOVE.cantGo);
+    if (direction === UP.upperCase) {
+      this.#upperBridge.push(MOVE.cantGo);
+      this.#lowerBridge.push(BLANK);
+      return;
+    }
+    this.#upperBridge.push(BLANK);
+    this.#lowerBridge.push(MOVE.cantGo);
   }
 
   getUpperBridge() {

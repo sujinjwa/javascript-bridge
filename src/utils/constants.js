@@ -30,9 +30,21 @@ const DOWN = Object.freeze({
 
 const ZERO = Object.freeze(0);
 const ONE = Object.freeze(1);
+const BLANK = Object.freeze(' ');
+
 const MOVE = Object.freeze({
   canGo: 'O',
   cantGo: 'X',
 });
 
-module.exports = { MESSAGE, ERROR, BRIDGE_SIZE, ZERO, ONE, UP, DOWN, MOVE };
+module.exports = {
+  MESSAGE,
+  ERROR,
+  BRIDGE_SIZE,
+  ZERO,
+  ONE,
+  BLANK,
+  UP,
+  DOWN,
+  MOVE,
+};
