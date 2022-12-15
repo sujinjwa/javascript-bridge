@@ -2,7 +2,7 @@ const OutputView = require('../view/OutputView');
 const InputView = require('../view/InputView');
 const BridgeGame = require('../model/BridgeGame');
 const WinningBridge = require('../model/WinningBridge');
-const { MESSAGE } = require('../utils/constants');
+const { MESSAGE, RETRY } = require('../utils/constants');
 
 class Controller {
   constructor() {
@@ -77,7 +77,23 @@ class Controller {
       OutputView.printMessage(error);
       this.inputGameCommand();
     }
+
+    this.proceedRetryOrQuit(command);
   }
+
+  proceedRetryOrQuit(command) {
+    if (command === RETRY.upperCase) return this.retry();
+
+    return this.quit();
+  }
+
+  retry() {
+    this.bridgeGame.retry();
+
+    this.inputMovingDirection();
+  }
+
+  quit() {}
 }
 
 module.exports = Controller;
