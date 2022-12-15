@@ -3,8 +3,7 @@ const BridgeRandomNumberGenerator = require('../BridgeRandomNumberGenerator');
 const BridgeMaker = require('../BridgeMaker');
 
 class WinningBridge {
-  #upperBridge = [];
-  #lowerBridge = [];
+  #winningBridge = [];
 
   validateSize(size) {
     Validation.checkBlank(size);
@@ -13,8 +12,13 @@ class WinningBridge {
   }
 
   make(size) {
-    BridgeMaker.makeBridge(size, BridgeRandomNumberGenerator.generate);
+    this.#winningBridge = BridgeMaker.makeBridge(
+      size,
+      BridgeRandomNumberGenerator.generate
+    );
   }
+
+  canMove(direction) {}
 }
 
 module.exports = WinningBridge;
