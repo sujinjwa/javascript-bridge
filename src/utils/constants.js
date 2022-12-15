@@ -1,5 +1,19 @@
 const MESSAGE = Object.freeze({
   gameStart: '다리 건너기 게임을 시작합니다.\n',
+  inputBridgeSize: '다리의 길이를 입력해주세요.\n',
 });
 
-module.exports = { MESSAGE };
+const ERROR = Object.freeze({
+  mustNotBeBlank: '[ERROR] 공백입니다. 값을 입력해주세요.\n',
+  mustBeNumber: '[ERROR] 숫자로 입력해주세요.\n',
+  mustBeInRange: '[ERROR] 다리의 길이는 3 ~ 20 이내여야 합니다.\n',
+});
+
+const BRIDGE_SIZE = Object.freeze({
+  min: 3,
+  max: 20,
+});
+
+const ZERO = Object.freeze(0);
+
+module.exports = { MESSAGE, ERROR, BRIDGE_SIZE, ZERO };
